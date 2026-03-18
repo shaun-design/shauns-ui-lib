@@ -6,16 +6,31 @@ import { createTheme } from '@/design-system/theme/createTheme';
 /**
  * Decorator: Wraps every story with MUI ThemeProvider so components
  * receive the theme (colors, spacing, etc. from tokens).
+ *
+ * The wrapper div applies the theme's background so the Docs canvas
+ * shows light/dark correctly when you toggle the Theme toolbar.
  */
 const withTheme = (Story: React.ComponentType, context: { globals: { theme?: string } }) => {
   const mode = (context.globals.theme as 'light' | 'dark') || 'light';
   const theme = createTheme(mode);
 
+  const wrapper = React.createElement(
+    'div',
+    {
+      style: {
+        backgroundColor: theme.palette.background.default,
+        minHeight: '100%',
+        padding: 16,
+      },
+    },
+    React.createElement(Story)
+  );
+
   return React.createElement(
     ThemeProvider,
     { theme },
     React.createElement(CssBaseline),
-    React.createElement(Story)
+    wrapper
   );
 };
 
