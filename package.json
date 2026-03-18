@@ -1,0 +1,59 @@
+{
+  "name": "shauns-ui-lib",
+  "version": "1.0.0",
+  "description": "My Second Design System Pipeline",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "build:tokens": "node build-tokens.mjs",
+    "preview": "vite preview",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build",
+    "chromatic": "chromatic"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shaun-design/shauns-ui-lib.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/shaun-design/shauns-ui-lib/issues"
+  },
+  "homepage": "https://github.com/shaun-design/shauns-ui-lib#readme",
+  "dependencies": {
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.1",
+    "@heroicons/react": "^2.2.0",
+    "@mui/material": "^7.3.9",
+    "@tokens-studio/sd-transforms": "^2.0.3",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "style-dictionary": "^5.3.3"
+  },
+  "devDependencies": {
+    "@chromatic-com/storybook": "^5.0.1",
+    "@storybook/addon-a11y": "^10.3.0",
+    "@storybook/addon-docs": "^10.3.0",
+    "@storybook/addon-onboarding": "^10.3.0",
+    "@storybook/addon-vitest": "^10.3.0",
+    "@storybook/react-vite": "^10.3.0",
+    "@types/node": "^25.5.0",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^6.0.1",
+    "@vitest/browser-playwright": "^4.1.0",
+    "@vitest/coverage-v8": "^4.1.0",
+    "chromatic": "^15.3.0",
+    "playwright": "^1.58.2",
+    "react-docgen-typescript": "^2.4.0",
+    "storybook": "^10.3.0",
+    "typescript": "^5.9.3",
+    "vite": "^8.0.0",
+    "vitest": "^4.1.0"
+  }
+}
