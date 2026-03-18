@@ -12,14 +12,21 @@ Compact element for tags, filters, or input chips. Uses MUI Chip with the design
 | `variant`  | `'filled' \| 'outlined'`                                             | `'filled'`| Filled or outlined                   |
 | `disabled` | `boolean`                                                            | `false`   | Disabled state                       |
 | `deletable`| `boolean`                                                            | `false`   | Show delete icon (pass `onDelete`)   |
-| `thumbnail`| `ReactElement`                                                       | —         | Optional icon before label           |
+| `thumbnail`| `ReactElement`                                                       | —         | Icon or Avatar before label          |
 
 ## Usage
 
 ```tsx
-import { Chip } from '@/design-system/components';
+import { Chip, Avatar } from '@/design-system/components';
 
 <Chip label="Tag" />
 <Chip label="Primary" color="primary" />
 <Chip label="Deletable" deletable onDelete={() => console.log('deleted')} />
+
+{/* Chip with Avatar thumbnail */}
+<Chip label="John Doe" thumbnail={<Avatar content="text" initials="JD" size="24px" />} />
 ```
+
+## Thumbnail
+
+Pass an `<Avatar />` for user chips (e.g. assignees, mentions). Use `size="24px"` for large chips and `size="18px"` for small chips.

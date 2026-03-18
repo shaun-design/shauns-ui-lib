@@ -9,7 +9,7 @@ import { useState } from 'react'
 import { ThemeProvider, CssBaseline, Box, IconButton } from '@mui/material'
 import { SunIcon, MoonIcon } from '@heroicons/react/24/outline'
 import { createTheme } from '@/design-system/theme/createTheme'
-import { Button } from '@/design-system/components/Button'
+import { Chip, Avatar } from '@/design-system/components'
 
 function App() {
   const [mode, setMode] = useState<'light' | 'dark'>('light')
@@ -41,13 +41,10 @@ function App() {
           </IconButton>
         </Box>
 
-        <Box sx={{ display: 'flex', gap: 2, flexWrap: 'wrap' }}>
-          <Button variant="contained">Primary</Button>
-          <Button variant="outlined">Outlined</Button>
-          <Button variant="text">Text</Button>
-          <Button variant="contained" color="secondary">
-            Secondary
-          </Button>
+        <Box sx={{ display: 'flex', gap: 2, flexWrap: 'wrap', alignItems: 'center' }}>
+          <Chip label="Chip" />
+          <Chip label="Primary" color="primary" />
+          <Chip label="Avatar" thumbnail={<Avatar content="text" initials="OP" size="24px" />} />
         </Box>
 
         <Box sx={{ mt: 3, p: 2, bgcolor: 'background.paper', borderRadius: 1 }}>

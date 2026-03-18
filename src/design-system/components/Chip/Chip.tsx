@@ -1,11 +1,9 @@
 /**
  * Chip component - uses MUI Chip with theme from tokens.
- *
- * Props map to your Figma component API. All styling comes from the
- * design pipeline (theme.palette, theme.typography, theme.spacing).
  */
 
 import MuiChip, { type ChipProps } from '@mui/material/Chip';
+import Box from '@mui/material/Box';
 import type { ReactElement } from 'react';
 
 export type ChipSize = 'small' | 'large';
@@ -28,7 +26,7 @@ export interface ChipComponentProps extends Omit<ChipProps, 'size' | 'color' | '
   variant?: ChipVariant;
   /** When true, shows delete icon. Pass onDelete for the callback. */
   deletable?: boolean;
-  /** Optional icon or avatar before the label (React element) */
+  /** Optional icon or Avatar before the label. Pass <Avatar /> for user chips. */
   thumbnail?: ReactElement;
   /** Chip label text */
   label: string;
@@ -36,7 +34,6 @@ export interface ChipComponentProps extends Omit<ChipProps, 'size' | 'color' | '
 
 /**
  * Chip - compact element for tags, filters, or input chips.
- * Uses MUI theme for colors, typography, and spacing.
  */
 export function Chip({
   size = 'large',
@@ -50,17 +47,53 @@ export function Chip({
   ...rest
 }: ChipComponentProps) {
   const muiSize = size === 'large' ? 'medium' : 'small';
+  const avatarSize = size === 'small' ? 18 : 24;
+  const { sx: restSx, ...restProps } = rest;
+
+  const avatarElement = thumbnail ? (
+    <Box
+      component="span"
+      sx={{
+        marginLeft: '2px',
+        display: 'inline-flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: avatarSize,
+        height: avatarSize,
+        flexShrink: 0,
+        overflow: 'hidden',
+        borderRadius: '50%',
+        '& > *': {
+          width: `${avatarSize}px !important`,
+          height: `${avatarSize}px !important`,
+          minWidth: `${avatarSize}px !important`,
+          minHeight: `${avatarSize}px !important`,
+        },
+        '& .MuiAvatar-root': {
+          width: `${avatarSize}px !important`,
+          height: `${avatarSize}px !important`,
+          minWidth: `${avatarSize}px !important`,
+          minHeight: `${avatarSize}px !important`,
+        },
+      }}
+    >
+      {thumbnail}
+    </Box>
+  ) : undefined;
 
   return (
     <MuiChip
       size={muiSize}
       color={color}
       variant={variant}
+      avatar={avatarElement}
       label={label}
       disabled={disabled}
       onDelete={deletable ? (onDelete ?? (() => {})) : undefined}
-      icon={thumbnail}
-      {...rest}
+      sx={{
+        ...(typeof restSx === 'object' && restSx ? restSx : {}),
+      }}
+      {...restProps}
     />
   );
 }

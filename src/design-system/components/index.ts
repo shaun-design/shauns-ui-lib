@@ -4,5 +4,5 @@
  * Import from here when building screens:
  * import { Button, Chip } from '@/design-system/components'
  */
-export { Button } from './Button';
 export { Chip } from './Chip';
+export { Avatar } from './Avatar';
