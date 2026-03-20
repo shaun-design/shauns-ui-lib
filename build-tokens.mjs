@@ -109,7 +109,6 @@ async function buildTokensFromFile(sourcePath) {
           {
             destination: '__temp_tokens__.json',
             format: 'json/nested',
-            filter: (token) => !token.path.some((p) => String(p).startsWith('_')),
           },
         ],
       },

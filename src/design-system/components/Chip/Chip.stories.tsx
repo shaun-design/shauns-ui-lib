@@ -27,6 +27,8 @@ const meta = {
   tags: ['autodocs'],
   args: {
     showAvatar: false,
+    deletable: false,
+    disabled: false,
   },
   argTypes: {
     showAvatar: {
@@ -51,9 +53,11 @@ const meta = {
     },
     deletable: {
       control: 'boolean',
+      description: 'Show delete icon',
     },
     disabled: {
       control: 'boolean',
+      description: 'Disabled state',
     },
   },
 } satisfies Meta<typeof ChipWithAvatarToggle>;
@@ -172,6 +176,7 @@ export const WithAvatarImage: Story = {
 /** Avatar chips in a row - reference: https://mui.com/material-ui/react-chip/ */
 export const AvatarChips: Story = {
   args: {
+    label: 'Avatar',
     showAvatar: true,
   },
   render: (args) => (

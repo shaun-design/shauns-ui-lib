@@ -15,6 +15,9 @@ const meta = {
     layout: 'centered',
   },
   tags: ['autodocs'],
+  args: {
+    badge: false,
+  },
   argTypes: {
     content: {
       control: 'select',
@@ -30,6 +33,15 @@ const meta = {
     },
     badge: {
       control: 'boolean',
+      description: 'Show status badge (green dot)',
+    },
+    icon: {
+      control: false,
+      description: 'Custom icon when content="icon" (default UserIcon used in Controls)',
+    },
+    src: {
+      control: false,
+      description: 'Image URL when content="image" (default image used in Controls)',
     },
   },
 } satisfies Meta<typeof Avatar>;
